@@ -9,7 +9,7 @@ object Endpoints {
   // GET /cats
   val getAllCats = endpoint.get.in("cats").in("all-cats")
 
-  // GET /cats?name=[..]
+  // GET /cats/{name}
   val getCat = endpoint.get.in("cats").in("just-one-cat")
 
   // POST /cats
