@@ -19,7 +19,9 @@ object Server extends App {
     Endpoints.hello.serverLogicSuccess(Logic.helloLogic)
 
   val helloWorldAnnotationServerEndpoint =
-    Endpoints.helloAnnotations.serverLogicSuccess(helloInput => Future.successful(s"Hello ${helloInput.name}, you're ${helloInput.age}"))
+    Endpoints.helloAnnotations.serverLogicSuccess(helloInput =>
+      Future.successful(s"Hello ${helloInput.name}, you're ${helloInput.age}")
+    )
 
   val docs = SwaggerInterpreter().fromEndpoints[Future](
     List(
@@ -30,7 +32,8 @@ object Server extends App {
     "1.0"
   )
 
-  val routes = AkkaHttpServerInterpreter().toRoute(List(helloWorldServerEndpoint, helloWorldAnnotationServerEndpoint) ++ docs)
+  val routes =
+    AkkaHttpServerInterpreter().toRoute(List(helloWorldServerEndpoint, helloWorldAnnotationServerEndpoint) ++ docs)
 
   // starting the server
   val bindingFuture = Http()

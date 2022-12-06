@@ -13,21 +13,3 @@ lazy val workshop = (project in file("./workshop"))
     name := "tapir-workshop",
     libraryDependencies ++= Dependencies.common ++ Dependencies.server
   )
-
-lazy val endpoints = (project in file("./endpoints"))
-  .settings(
-    name := "tapir-example-endpoints",
-    libraryDependencies ++= Dependencies.common
-  )
-
-lazy val client = (project in file("./client"))
-  .settings(
-    name := "tapir-example-client",
-    libraryDependencies ++= Dependencies.common ++ Dependencies.client
-  ).dependsOn(endpoints)
-
-lazy val server = (project in file("./server"))
-  .settings(
-    name := "tapir-example-server",
-    libraryDependencies ++= Dependencies.common ++ Dependencies.server
-  ).dependsOn(endpoints)
